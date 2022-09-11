@@ -13,7 +13,7 @@
     "@graphcms/rich-text-types": "^0.5.0",
     "@mailchimp/mailchimp_marketing": "^3.0.78",
     "axios": "^0.27.2",
-    "bootstrap": "^5.2.0",
+    "bootstrap": "^5.2.1",
     "bootstrap-icons": "^1.9.1",
     "graphql": "^16.6.0",
     "graphql-request": "^5.0.0",
