@@ -2,7 +2,6 @@ import { useRouter } from "next/dist/client/router";
 import { useState } from "react";
 
 import { PaystackButton } from "react-paystack";
-import styles from "../../styles/components/DonateBlock.module.scss";
 
 const DonateBlock: React.FunctionComponent = () => {
 	const router = useRouter();
@@ -27,6 +26,21 @@ const DonateBlock: React.FunctionComponent = () => {
 	const [email, setEmail] = useState("");
 	const [amount, setAmount] = useState(0);
 	const [currency, setCurrency] = useState("USD");
+
+	const handlePaystackSuccessAction = (reference: string) => {
+		router.push("/donate-complete");
+		console.log("Payment complete! Reference: " + reference);
+	};
+
+	const paystackConfig = {
+		publicKey: "pk_test_50988ea6de4aa7a346924072a1d5974c42a88bbd",
+		reference: new Date().getTime().toString(),
+		onSuccess: (reference: string) =>
+			handlePaystackSuccessAction(reference),
+		onClose: () => {
+			console.log("Closed payment window");
+		},
+	};
 
 	return (
 		<div className="card border-0" style={{ width: "24rem" }}>
@@ -101,23 +115,18 @@ const DonateBlock: React.FunctionComponent = () => {
 					</select>
 				</div>
 				<PaystackButton
-					amount={amount * 100}
+					publicKey={paystackConfig.publicKey}
 					email={email}
+					amount={amount * 100}
 					currency={returnCurrency(currency)}
-					reference={new Date().getTime().toString()}
-					publicKey="pk_test_50988ea6de4aa7a346924072a1d5974c42a88bbd"
 					text="Donate"
-					onSuccess={(ref: { reference: string }) => {
-						router.push("/donate-complete");
-						console.log(
-							"Payment complete! Reference: " + ref.reference
-						);
-					}}
+					onSuccess={paystackConfig.onSuccess}
 					onClose={() => {
 						console.log("Closed payment window");
 					}}
 					className="btn btn-primary text-white w-50"
 				/>
+				1
 			</form>
 		</div>
 	);

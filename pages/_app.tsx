@@ -1,12 +1,10 @@
-import "../styles/globals.scss";
 import { AppProps } from "next/app";
 import { useEffect } from "react";
+import "../styles/globals.scss";
 
 function MyApp({ Component, pageProps }: AppProps) {
 	useEffect(() => {
-		typeof document !== undefined
-			? require("bootstrap/dist/js/bootstrap")
-			: null;
+		document ? require("bootstrap/dist/js/bootstrap") : null;
 	}, []);
 	return <Component {...pageProps} />;
 }
