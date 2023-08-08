@@ -1,8 +1,8 @@
-import styles from "/styles/components/NavBar.module.scss";
 import Link from "next/link";
+import { contactInfo } from "../types";
 import NavDropdown from "./NavDropdown";
 import NavLink from "./NavLink";
-import { contactInfo } from "../types";
+import styles from "/styles/components/NavBar.module.scss";
 
 type Props = {
 	active: string;
@@ -122,10 +122,8 @@ const NavBar: React.FunctionComponent<Props> = ({ active, contactInfo }) => {
 
 			<nav className="navbar navbar-expand-lg navbar-light shadow sticky-top">
 				<div className="container-fluid">
-					<Link href="/">
-						<a className="navbar-brand fw-bolder fs-2">
-							World Eye Foundation
-						</a>
+					<Link className="navbar-brand fw-bolder fs-2" href="/">
+						World Eye Foundation
 					</Link>
 					<button
 						className="navbar-toggler border-0"
@@ -169,12 +167,12 @@ const NavBar: React.FunctionComponent<Props> = ({ active, contactInfo }) => {
 							}
 						})}
 
-						<Link href="/donate" passHref>
-							<button className="btn btn-primary col-3 col-sm-2 col-md-2 p-2 ms-3">
-								<a className="text-light text-decoration-none">
-									Donate
-								</a>
-							</button>
+						<Link
+							href="/donate"
+							passHref
+							className="col-3 col-sm-2 col-md-2 p-2 ms-3"
+						>
+							<button className="btn btn-primary">Donate</button>
 						</Link>
 					</div>
 				</div>
