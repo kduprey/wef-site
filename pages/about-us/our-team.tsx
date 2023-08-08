@@ -1,11 +1,11 @@
+import { gql } from "graphql-request";
+import { GetStaticProps, NextPage } from "next";
 import Head from "next/head";
+import BioCard from "../../components/BioCard";
 import Footer from "../../components/Footer";
 import NavBar from "../../components/NavBar";
-import { gql } from "graphql-request";
 import graphcms from "../../config/graphCMSConfig";
-import BioCard from "../../components/BioCard";
-import { GetStaticProps, NextPage } from "next";
-import { contactInfo, Profile } from "../../types";
+import { Profile, contactInfo } from "../../types";
 
 type Props = {
 	profiles: Profile[];
@@ -85,7 +85,9 @@ export const getStaticProps: GetStaticProps = async () => {
 		}
 	`;
 
-	const { contactInfos } = await graphcms.request(QUERY);
+	const { contactInfos } = await graphcms.request<{
+		contactInfos: contactInfo[];
+	}>(QUERY);
 
 	const QUERY2 = gql`
 		query MyQuery {
@@ -106,7 +108,9 @@ export const getStaticProps: GetStaticProps = async () => {
 		}
 	`;
 
-	const { profiles } = await graphcms.request(QUERY2);
+	const { profiles } = await graphcms.request<{ profiles: Profile[] }>(
+		QUERY2
+	);
 
 	return {
 		props: {

@@ -1,12 +1,12 @@
-import styles from "../styles/Donate.module.scss";
-import DonateBlock from "../components/DonateBlock";
+import { gql } from "graphql-request";
+import { GetStaticProps, NextPage } from "next";
 import Head from "next/head";
 import Script from "next/script";
-import NavBar from "../components/NavBar";
+import DonateBlock from "../components/DonateBlock";
 import Footer from "../components/Footer";
-import { gql } from "graphql-request";
+import NavBar from "../components/NavBar";
 import graphcms from "../config/graphCMSConfig";
-import { GetStaticProps, NextPage } from "next";
+import styles from "../styles/Donate.module.scss";
 import { contactInfo } from "../types";
 
 type Props = {
@@ -59,7 +59,9 @@ export const getStaticProps: GetStaticProps = async () => {
 		}
 	`;
 
-	const { contactInfos } = await graphcms.request(QUERY);
+	const { contactInfos } = await graphcms.request<{
+		contactInfos: contactInfo[];
+	}>(QUERY);
 
 	return {
 		props: {

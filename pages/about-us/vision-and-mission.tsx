@@ -1,12 +1,12 @@
+import { RichText } from "@graphcms/rich-text-react-renderer";
+import { gql } from "graphql-request";
+import { GetStaticProps, NextPage } from "next";
+import Head from "next/head";
 import React from "react";
 import Footer from "../../components/Footer";
 import NavBar from "../../components/NavBar";
-import Head from "next/head";
 import graphcms from "../../config/graphCMSConfig";
-import { gql } from "graphql-request";
-import { RichText } from "@graphcms/rich-text-react-renderer";
 import renderers from "../../config/richTextRenders";
-import { GetStaticProps, NextPage } from "next";
 import { Article, contactInfo } from "../../types";
 
 type Props = {
@@ -62,7 +62,9 @@ export const getStaticProps: GetStaticProps = async () => {
 			}
 		}
 	`;
-	const { articles } = await graphcms.request(QUERY2);
+	const { articles } = await graphcms.request<{ articles: Article[] }>(
+		QUERY2
+	);
 
 	const QUERY = gql`
 		query ContactInfo {
@@ -80,7 +82,9 @@ export const getStaticProps: GetStaticProps = async () => {
 		}
 	`;
 
-	const { contactInfos } = await graphcms.request(QUERY);
+	const { contactInfos } = await graphcms.request<{
+		contactInfos: contactInfo[];
+	}>(QUERY);
 
 	return {
 		props: {

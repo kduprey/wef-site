@@ -1,11 +1,11 @@
+import { gql } from "graphql-request";
+import { GetStaticProps, NextPage } from "next";
 import Head from "next/head";
+import Image from "next/legacy/image";
 import Footer from "../components/Footer";
 import NavBar from "../components/NavBar";
 import graphcms from "../config/graphCMSConfig";
-import { gql } from "graphql-request";
-import { GetStaticProps, NextPage } from "next";
-import { contactInfo } from "../types";
-import Image from "next/image";
+import { Article, contactInfo } from "../types";
 
 type Props = {
 	contactInfo: contactInfo;
@@ -84,8 +84,19 @@ export const getStaticProps: GetStaticProps = async () => {
 		}
 	`;
 
-	const { contactInfos } = await graphcms.request(QUERY);
-	const { articles } = await graphcms.request(QUERY2);
+	const { contactInfos } = await graphcms.request<{
+		contactInfos: contactInfo;
+	}>(QUERY);
+	const { articles } = await graphcms.request<{
+		articles: {
+			imagesOrVideos: {
+				url: string;
+				height: number;
+				id: string;
+				width: number;
+			}[];
+		}[];
+	}>(QUERY2);
 
 	return {
 		props: {

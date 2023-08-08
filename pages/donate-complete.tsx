@@ -1,12 +1,12 @@
-import Footer from "../components/Footer";
-import NavBar from "../components/NavBar";
-import Head from "next/head";
-import graphcms from "../config/graphCMSConfig";
+import axios from "axios";
 import { gql } from "graphql-request";
 import { GetStaticProps, NextPage } from "next";
-import { contactInfo } from "../types";
+import Head from "next/head";
 import { useState } from "react";
-import axios from "axios";
+import Footer from "../components/Footer";
+import NavBar from "../components/NavBar";
+import graphcms from "../config/graphCMSConfig";
+import { contactInfo } from "../types";
 
 type Props = {
 	contactInfo: contactInfo;
@@ -157,7 +157,9 @@ export const getStaticProps: GetStaticProps = async () => {
 		}
 	`;
 
-	const { contactInfos } = await graphcms.request(QUERY);
+	const { contactInfos } = await graphcms.request<{
+		contactInfos: contactInfo[];
+	}>(QUERY);
 
 	return {
 		props: {
