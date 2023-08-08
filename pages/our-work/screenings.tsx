@@ -1,11 +1,11 @@
+import { gql } from "graphql-request";
+import { GetStaticProps, NextPage } from "next";
 import Head from "next/head";
 import Footer from "../../components/Footer";
 import NavBar from "../../components/NavBar";
-import { gql } from "graphql-request";
-import graphcms from "../../config/graphCMSConfig";
-import { contactInfo, Screening } from "../../types";
-import { GetStaticProps, NextPage } from "next";
 import ScreeningCard from "../../components/ScreeningCard";
+import graphcms from "../../config/graphCMSConfig";
+import { Screening, contactInfo } from "../../types";
 
 type Props = {
 	contactInfo: contactInfo;
@@ -74,8 +74,12 @@ export const getStaticProps: GetStaticProps = async () => {
 		}
 	`;
 
-	const { contactInfos } = await graphcms.request(QUERY);
-	const { screenings } = await graphcms.request(QUERY2);
+	const { contactInfos } = await graphcms.request<{
+		contactInfos: contactInfo;
+	}>(QUERY);
+	const { screenings } = await graphcms.request<{ screenings: Screening[] }>(
+		QUERY2
+	);
 
 	return {
 		props: {

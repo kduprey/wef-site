@@ -1,11 +1,11 @@
-import styles from "../styles/Home.module.scss";
-import MainJumbotron from "../components/Index/MainJumbotron";
-import NavBar from "../components/NavBar";
+import { gql } from "graphql-request";
+import { GetStaticProps } from "next";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
-import { gql } from "graphql-request";
+import MainJumbotron from "../components/Index/MainJumbotron";
+import NavBar from "../components/NavBar";
 import graphcms from "../config/graphCMSConfig";
-import { GetStaticProps } from "next";
+import styles from "../styles/Home.module.scss";
 import { contactInfo } from "../types";
 
 type Props = {
@@ -47,7 +47,9 @@ export const getStaticProps: GetStaticProps = async () => {
 		}
 	`;
 
-	const { contactInfos } = await graphcms.request(QUERY);
+	const { contactInfos } = await graphcms.request<{
+		contactInfos: contactInfo;
+	}>(QUERY);
 
 	return {
 		props: {
