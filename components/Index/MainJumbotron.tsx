@@ -1,6 +1,6 @@
-import styles from "/styles/components/jumbotron.module.scss";
 import Image from "next/legacy/image";
 import Link from "next/link";
+import styles from "/styles/components/jumbotron.module.scss";
 
 type Props = {
 	contactInfo;
@@ -40,10 +40,11 @@ const MainJumbotron: React.FC<Props> = ({ contactInfo }) => {
 				</p>
 				<div className="d-flex align-items-center justify-content-center w-75 flex-column flex-md-row">
 					<button className="btn btn-primary px-4 py-2">
-						<Link href="/donate">
-							<a className="text-white text-decoration-none">
-								Donate
-							</a>
+						<Link
+							href="/donate"
+							className="text-white text-decoration-none"
+						>
+							Donate
 						</Link>
 					</button>
 					<a

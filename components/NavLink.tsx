@@ -15,14 +15,18 @@ const NavLink: React.FunctionComponent<Props> = ({
 }) => {
 	if (active === route) {
 		return (
-			<Link aria-current="page" href={route}>
-				<a className={`nav-link active ${classes}`}>{title}</a>
+			<Link
+				aria-current="page"
+				href={route}
+				className={`nav-link active ${classes}`}
+			>
+				{title}
 			</Link>
 		);
 	} else {
 		return (
-			<Link href={route}>
-				<a className={`nav-link ${classes}`}>{title}</a>
+			<Link href={route} className={`nav-link ${classes}`}>
+				{title}
 			</Link>
 		);
 	}

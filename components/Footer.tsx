@@ -1,7 +1,7 @@
-import styles from "../../styles/components/Footer.module.scss";
+import axios from "axios";
 import Link from "next/link";
 import { useState } from "react";
-import axios from "axios";
+import styles from "../../styles/components/Footer.module.scss";
 import { contactInfo } from "../types";
 
 type Props = {
@@ -84,55 +84,60 @@ const Footer: React.FunctionComponent<Props> = ({ active, contactInfo }) => {
 				<div className="d-flex flex-column justify-content-evenly">
 					<p className="fs-5">Important Links</p>
 					<ul className="list-unstyled fw-light">
-						<Link href="/about-us/history" passHref>
-							<a className="text-reset text-decoration-none">
-								<li
-									className={`py-2 footer-link ${
-										active == "about" ? "active" : null
-									}`}
-									id="about-us"
-								>
-									About Us
-								</li>
-							</a>
+						<Link
+							href="/about-us/history"
+							passHref
+							className="text-reset text-decoration-none"
+						>
+							<li
+								className={`py-2 footer-link ${
+									active == "about" ? "active" : null
+								}`}
+								id="about-us"
+							>
+								About Us
+							</li>
 						</Link>
-						<Link href="/volunteering">
-							<a className="text-reset text-decoration-none">
-								<li
-									className={`py-2 footer-link ${
-										active == "volunteering"
-											? "active"
-											: null
-									}`}
-									id="get-involved"
-								>
-									Get Involved
-								</li>
-							</a>
+						<Link
+							href="/volunteering"
+							className="text-reset text-decoration-none"
+						>
+							<li
+								className={`py-2 footer-link ${
+									active == "volunteering" ? "active" : null
+								}`}
+								id="get-involved"
+							>
+								Get Involved
+							</li>
 						</Link>
-						<Link href="/donate" passHref>
-							<a className="text-reset text-decoration-none">
-								<li
-									className={`py-2 footer-link ${
-										active == "donate" ? "active" : null
-									}`}
-									id="donate"
-								>
-									Donate
-								</li>
-							</a>
+						<Link
+							href="/donate"
+							passHref
+							className="text-reset text-decoration-none"
+						>
+							<li
+								className={`py-2 footer-link ${
+									active == "donate" ? "active" : null
+								}`}
+								id="donate"
+							>
+								Donate
+							</li>
 						</Link>
-						<Link href="/about-us/contact-us" passHref>
-							<a className="text-reset text-decoration-none">
-								<li
-									className={`py-2 footer-link ${
-										active == "contact" ? "active" : null
-									}`}
-									id="contact-us"
-								>
-									Contact Us
-								</li>
-							</a>
+						<Link
+							href="/about-us/contact-us"
+							passHref
+							className="text-reset text-decoration-none"
+						>
+							<li
+								className={`py-2 footer-link ${
+									active == "contact" ? "active" : null
+								}`}
+								id="contact-us"
+							>
+								Contact Us
+							</li>
 						</Link>
 					</ul>
 				</div>

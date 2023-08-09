@@ -14,6 +14,8 @@ type Props = {
 };
 
 const history: NextPage<Props> = ({ article, contactInfo }) => {
+	console.log(article.publishedAt);
+
 	return (
 		<div className="vh-100 d-flex flex-column">
 			<Head>
