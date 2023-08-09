@@ -9,7 +9,7 @@ export type Content = {
 export interface Article {
 	author: Author;
 	title: string;
-	publishedAt: null;
+	updatedAt: string;
 	content: Content;
 }
 

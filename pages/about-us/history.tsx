@@ -14,8 +14,6 @@ type Props = {
 };
 
 const history: NextPage<Props> = ({ article, contactInfo }) => {
-	console.log(article.publishedAt);
-
 	return (
 		<div className="vh-100 d-flex flex-column">
 			<Head>
@@ -31,7 +29,7 @@ const history: NextPage<Props> = ({ article, contactInfo }) => {
 				<h1 className="text-center pt-3">{article.title}</h1>
 				<p className="text-muted text-end">
 					Last updated:{" "}
-					{new Date(article.publishedAt).toLocaleString()}
+					{new Date(article.updatedAt).toLocaleDateString()}
 				</p>
 				<RichText
 					content={article.content.raw}
