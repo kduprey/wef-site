@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "@graphcms/rich-text-react-renderer": "^0.6.1",
-    "@graphcms/rich-text-types": "^0.5.0",
+    "@graphcms/rich-text-types": "^0.5.1",
     "@mailchimp/mailchimp_marketing": "^3.0.78",
     "axios": "^1.6.5",
     "bootstrap": "^5.3.2",
