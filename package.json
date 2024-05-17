@@ -22,7 +22,7 @@
     "react": "18.3.1",
     "react-dom": "18.3.1",
     "react-paystack": "^5.0.0",
-    "sass": "^1.77.1"
+    "sass": "^1.77.2"
   },
   "devDependencies": {
     "@types/node": "^20.12.12",
