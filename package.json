@@ -9,7 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@graphcms/rich-text-react-renderer": "^0.6.1",
+    "@graphcms/rich-text-react-renderer": "^0.6.2",
     "@graphcms/rich-text-types": "^0.5.1",
     "@mailchimp/mailchimp_marketing": "^3.0.78",
     "axios": "^1.7.4",
